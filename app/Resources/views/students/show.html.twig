@@ -1,0 +1,498 @@
+{% extends 'base.html.twig' %}
+
+{% set moyClass = 0 %}
+{% set nombre_eleve = 0 %}
+{% set evaluation = '' %}
+{% set matiere = '' %}
+
+
+{% block body %}
+<div class="page-content-wrapper">
+    <div class="page-content">
+        <div class="page-bar">
+            <div class="page-title-breadcrumb">
+                <div class=" pull-left">
+                    <div class="page-title"> <h5>Année scolaire {{ "now"|date('Y')-1 }}|{{ "now"|date('Y') }}</h5></div>
+                </div>
+                <ol class="breadcrumb page-breadcrumb pull-right">
+                    <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item" href="{{ path('homepage') }}">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
+                    </li>
+                    <li class="active">Dashboard</li>
+                </ol>
+            </div>
+        </div>
+    <h1>{{ student.Name }} {{ student.prenom }} <img src="{{ asset( 'uploads/students/'~ student.filename) }}" {#class="doctor-pic"#} alt="" width="150">
+    </h1>
+        <div class="col-md-10 col-sm-10">
+            <div class="panel tab-border card-box">
+                <header class="panel-heading panel-heading-gray custom-tab ">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item"><a href="#home" data-toggle="tab" class="active">Infos élève</a>
+                        </li>
+                        <li class="nav-item"><a href="#about" data-toggle="tab">Information additionnelle</a>
+                        </li>
+                        <li class="nav-item"><a href="#bulletin" data-toggle="tab">BULLETIN SANTE</a>
+                        </li>
+                        <li class="nav-item"><a href="#notes" data-toggle="tab">Notes </a>
+                        </li>
+                        <li class="nav-item"><a href="#profile" data-toggle="tab">Contact d'urgence</a>
+                        </li>
+                        </li>
+                        <li class="nav-item"><a href="#disciplinaire" data-toggle="tab">Discipline</a>
+                        </li>
+                    </ul>
+                </header>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="home">
+                            <div class="col-sm-12">
+                                <div class="card card-topline-red">
+                                    <div class="card-head">
+                                        <header>STRIPED TABLE</header>
+                                        <div class="tools">
+                                            <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
+                                            <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
+                                            <a class="t-close btn-color fa fa-times" href="javascript:;"></a>
+                                        </div>
+                                    </div>
+                                    <div class="card-body ">
+                                        <div class="table-scrollable">
+                                            <table class="table table-striped table-hover">
+                                                <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>Date of birth </td>
+                                                    <td>{% if student.anneeNais %}{{ student.anneeNais|date('Y-m-d')
+                                                        }}{% endif %}</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>Place of birth </td>
+                                                    <td> {{ student.lieuNais }} </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>Gender</td>
+                                                    <td> {{ student.sexe }} </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td> Admission date </td>
+                                                    <td>{% if student.dateCreate %}{{ student.dateCreate|date('Y-m-d H:i:s') }}{% endif %}</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>Voie de  recrutement </td>
+
+                                                        Etude de dossier: {% if student.etudeDossier %}Yes{% else %}No{% endif %}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td> Cycle </td>
+                                                    <td> {% if student.cycle %} {{ student.cycle }} {% else %}Not define{% endif %}</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td> Serie </td>
+                                                    <td> {% if student.serie %} {{ student.serie }} {% else %}Not define{% endif %}</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td> Dernier établissement fréquenté </td>
+                                                    <td> {% if student.lastSchool %} {{ student.lastSchool }} {% else %}Not define{% endif %}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td> Moyenne passage classe </td>
+                                                    <td> {% if student.moyPassageClasse %} {{ student.moyPassageClasse }} {% else %}Not define{% endif %}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td> Rang </td>
+                                                    <td> {% if student.rang  %} {{ student.rang  }} {% else %}Not define{% endif %}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Nom du dernier chef d’établissement</td>
+                                                    <td> {% if student.nameChefLastSchool %} {{ student.nameChefLastSchool }} {% else %}Not define{% endif %}</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="about">
+                            <div class="col-sm-12">
+                                <div class="card card-topline-red">
+                                    <div class="card-head">
+                                        <header>STRIPED TABLE</header>
+                                        <div class="tools">
+                                            <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
+                                            <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
+                                            <a class="t-close btn-color fa fa-times" href="javascript:;"></a>
+                                        </div>
+                                    </div>
+                                    <div class="card-body ">
+                                        <div class="table-scrollable">
+                                            <table class="table table-striped table-hover">
+                                                <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td> Père </td>
+                                                    <td> {% if student.pere %} {{ student.pere }} {% else %}Not define{% endif %}</td>
+                                                    <td> {% if student.telPere  %} {{ student.telPere  }} {% else %}Not define{% endif %}</td>
+                                                    <td> {% if student.emailPere %} {{ student.emailPere }} {% else %}Not define{% endif %}</td>
+                                                    <td> {% if student.profPere %} {{ student.profPere }} {% else %}Not define{% endif %}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Mère </td>
+                                                    <td> {% if student.mere  %} {{ student.mere  }} {% else %}Not define{% endif %}</td>
+                                                    <td> {% if student.telMere %} {{ student.telMere }} {% else %}Not define{% endif %}</td>
+                                                    <td> {% if student.emailMere  %} {{ student.emailMere  }} {% else %}Not define{% endif %}</td>
+                                                    <td> {% if student.profMere %} {{ student.profMere }} {% else %}Not define{% endif %}</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>Tuteur / autre tuteur  </td>
+                                                    <td> {% if student.tuteur  %} {{ student.tuteur  }} {% else %}Not define{% endif %}</td>
+                                                    <td> {% if student.telTuteur %} {{ student.telTuteur }} {% else %}Not define{% endif %}</td>
+                                                    <td> {% if student.emailTuteur %} {{ student.emailTuteur }} {% else %}Not define{% endif %}</td>
+                                                    <td> {% if student.profTuteur  %} {{ student.profTuteur  }} {% else %}Not define{% endif %}</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td> Résidence des parents  </td>
+                                                    <td> {% if student.residenceParents %} {{ student.residenceParents }} {% else %}Not define{% endif %}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Autres frères ou sœurs ainés  </td>
+                                                    <td> {% if student.proche1  %} {{ student.proche1  }} {% else %}Not define{% endif %}</td>
+                                                    <td> {% if student.telProche1  %} {{ student.telProche1  }} {% else %}Not define{% endif %}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td> {% if student.proche2  %} {{ student.proche2  }} {% else %}Not define{% endif %}</td>
+                                                    <td> {% if student.telProche2  %} {{ student.telProche2  }} {% else %}Not define{% endif %}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td> {% if student.proche3  %} {{ student.proche3  }} {% else %}Not define{% endif %}</td>
+                                                    <td> {% if student.telProche3  %} {{ student.telProche3  }} {% else %}Not define{% endif %}</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="bulletin">
+                            <div class="col-sm-12">
+                                <div class="card card-topline-red">
+                                    <div class="card-head">
+                                        <header>STRIPED TABLE</header>
+                                        <div class="tools">
+                                            <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
+                                            <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
+                                            <a class="t-close btn-color fa fa-times" href="javascript:;"></a>
+                                        </div>
+                                    </div>
+                                    <div class="card-body ">
+                                        <div class="table-scrollable">
+                                            <table class="table table-striped table-hover">
+                                                <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td> Groupe sanguin </td>
+                                                    <td> {% if student.groupeSanguin  %} {{ student.groupeSanguin  }} {% else %}Not define{% endif %}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td> Pathologie particulière </td>
+                                                    <td> {% if student.pathogieParticuliere  %} {{ student.pathogieParticuliere  }} {% else %}Not define{% endif %}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td> Allergie alimentaire </td>
+                                                    <td> {% if student.allergieAlimentaire  %} {{ student.allergieAlimentaire  }} {% else %}Not define{% endif %}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td> Allergie médicamenteuse </td>
+                                                    <td> {% if student.allergieMedicamenteuse  %} {{ student.allergieMedicamenteuse  }} {% else %}Not define{% endif %}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td> Dispense</td>
+                                                    <td> {% if student.dispense %} {{ student.dispense }} {% else %}Not define{% endif %}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td> Médecin de famille </td>
+                                                    <td> {% if student.medecinFamiliale %} {{ student.medecinFamiliale }} {% else %}Not define{% endif %}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td> Assurance famille </td>
+                                                    <td> {% if student.assuranceFamille %} {{ student.assuranceFamille }} {% else %}Not define{% endif %}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td> Hôpital agréé </td>
+                                                    <td> {% if student.hopitalAgree %} {{ student.hopitalAgree }} {% else %}Not define{% endif %}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td> Rhésus</td>
+                                                    <td> {% if student.rhesus %} {{ student.rhesus }} {% else %}Not define{% endif %}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td> Inaptitude</td>
+                                                    <td> {% if student.inaptitude  %} {{ student.inaptitude  }} {% else %}Not define{% endif %}</td>
+                                                </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="notes">
+                            <div class="col-sm-12">
+                                <div class="card card-topline-red">
+                                    <div class="card-head">
+                                        <header><a href="{{ path('note_repport', {'id': student.id}) }}">NOTE REPPORT</a> </header>
+                                        <div class="tools">
+                                            <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
+                                            <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
+                                            <a class="t-close btn-color fa fa-times" href="javascript:;"></a>
+                                        </div>
+                                    </div>
+                                    <div class="card-body ">
+                                        <div class="table-scrollable">
+                                            <table class="table table-striped table-hover">
+                                                <thead>
+                                                <tr>
+                                                    <th>Nom Examen</th>
+                                                    <th>Libellé cours</th>
+                                                    <th>Note</th>
+                                                    <th>Coefficient</th>
+                                                    <th>Moyenne Classe</th>
+                                                    <th>Commentaire</th>
+
+                                                    {% if(is_granted('ROLE_ADMIN')) %}
+                                                        <th> Actions </th>
+                                                    {% endif %}
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+
+                                        {% for note in notes %}
+
+                                            {% set matiere = note.matieres.name  %}
+                                            {% set evaluation = note.nomEvaluation  %}
+                                            {% set flo = note.students.classes.name  %}
+                                            {% set dev = note.students.classes.niveau.name  %}
+
+                                                <tr>
+                                                  {#  {% if not loop.first %}
+                                                        <td> {{ note.nomEvaluation }}</td>
+                                                    {% endif %}#}
+                                                    <td> {{ note.nomEvaluation }}</td>
+
+                                                    <td>{{ note.matieres.name  }}</td>
+                                                    <td> {{ note.valeur  }} </td>
+                                                    <td> {{ note.coeff }} </td>
+                                                    <td>
+
+                                                        {% for i in 0 .. all_notes|length-1 if ((all_notes[i].nomEvaluation == evaluation and all_notes[i].matieres.name == matiere)
+                                                        and (all_notes[i].students.classes.niveau.name == dev and all_notes[i].students.classes.name == flo) )%}
+
+                                                            {% set moyClass = moyClass + all_notes[i].valeur  %}
+                                                            {% set nombre_eleve = nombre_eleve + 1 %}
+                                                        {% endfor %}
+                                                        {{ (moyClass/nombre_eleve)|round(2, 'floor')  }}
+                                                        {% set moyClass = 0 %}
+                                                        {% set nombre_eleve = 0 %}
+                                                    </td>
+                                                    <td> {{ note.commentaire  }} </td>
+
+                                                    {% if(is_granted('ROLE_ADMIN')) %}
+                                                        <td>
+                                                            <a href="{{ path('notes_edit', { 'id': note.id }) }}" class="btn btn-primary btn-xs">
+                                                                <i class="fa fa-pencil"></i>
+                                                            </a>
+                                                            <a href="{{ path('notes_delete', { 'id': note.id }) }}" class="btn btn-danger btn-xs">
+                                                                <i class="fa fa-trash-o"></i>
+                                                            </a>
+                                                        </td>
+                                                    {% endif %}
+
+
+
+                                                </tr>
+
+                                        {% endfor %}
+
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="profile">
+                            <div class="col-sm-12">
+                                <div class="card card-topline-red">
+                                    <div class="card-head">
+                                        <header>STRIPED TABLE</header>
+                                        <div class="tools">
+                                            <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
+                                            <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
+                                            <a class="t-close btn-color fa fa-times" href="javascript:;"></a>
+                                        </div>
+                                    </div>
+                                    <div class="card-body ">
+                                        <div class="table-scrollable">
+                                            <table class="table table-striped table-hover">
+                                                <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td> Père </td>
+                                                    <td> {% if student.pere %} {{ student.pere }} {% else %}Not define{% endif %}</td>
+                                                    <td> {% if student.telPere  %} {{ student.telPere  }} {% else %}Not define{% endif %}</td>
+                                                    <td> {% if student.emailPere %} {{ student.emailPere }} {% else %}Not define{% endif %}</td>
+                                                    <td> {% if student.profPere %} {{ student.profPere }} {% else %}Not define{% endif %}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Mère </td>
+                                                    <td> {% if student.mere  %} {{ student.mere  }} {% else %}Not define{% endif %}</td>
+                                                    <td> {% if student.telMere %} {{ student.telMere }} {% else %}Not define{% endif %}</td>
+                                                    <td> {% if student.emailMere  %} {{ student.emailMere  }} {% else %}Not define{% endif %}</td>
+                                                    <td> {% if student.profMere %} {{ student.profMere }} {% else %}Not define{% endif %}</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>Tuteur / autre tuteur  </td>
+                                                    <td> {% if student.tuteur  %} {{ student.tuteur  }} {% else %}Not define{% endif %}</td>
+                                                    <td> {% if student.telTuteur %} {{ student.telTuteur }} {% else %}Not define{% endif %}</td>
+                                                    <td> {% if student.emailTuteur %} {{ student.emailTuteur }} {% else %}Not define{% endif %}</td>
+                                                    <td> {% if student.profTuteur  %} {{ student.profTuteur  }} {% else %}Not define{% endif %}</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td> Résidence des parents  </td>
+                                                    <td> {% if student.residenceParents %} {{ student.residenceParents }} {% else %}Not define{% endif %}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Autres frères ou sœurs ainés  </td>
+                                                    <td> {% if student.proche1  %} {{ student.proche1  }} {% else %}Not define{% endif %}</td>
+                                                    <td> {% if student.telProche1  %} {{ student.telProche1  }} {% else %}Not define{% endif %}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td> {% if student.proche2  %} {{ student.proche2  }} {% else %}Not define{% endif %}</td>
+                                                    <td> {% if student.telProche2  %} {{ student.telProche2  }} {% else %}Not define{% endif %}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td> {% if student.proche3  %} {{ student.proche3  }} {% else %}Not define{% endif %}</td>
+                                                    <td> {% if student.telProche3  %} {{ student.telProche3  }} {% else %}Not define{% endif %}</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="tab-pane" id="disciplinaire">
+                            <div class="col-sm-12">
+                                <div class="card card-topline-red">
+                                    <div class="card-head">
+                                        <header>STRIPED TABLE</header>
+                                        <div class="tools">
+                                            <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
+                                            <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
+                                            <a class="t-close btn-color fa fa-times" href="javascript:;"></a>
+                                        </div>
+                                    </div>
+                                    <div class="card-body ">
+                                        <div class="table-scrollable">
+                                            <table class="table table-striped table-hover">
+                                                <thead>
+                                                <tr>
+                                                    <th>Nature de l'indiscipline</th>
+                                                    <th>Date </th>
+                                                    <th>Descripton</th>
+                                                    <th>Compteur</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {% for disc in discipline %}
+                                                <tr>
+                                                    <td>{{ disc.motif }}</td>
+                                                    <td>{% if disc.dateMotif %}{{ disc.dateMotif|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                                    <td>{{ disc.description }}</td>
+                                                    <td>{{ disc.compteur }}</td>
+                                                    {% if(is_granted('ROLE_ADMIN')) %}
+                                                        <td>
+                                                            <a href="{{ path('facteurs_disciplinaires_edit', { 'id': disc.id }) }}" class="btn btn-primary btn-xs">
+                                                                <i class="fa fa-pencil"></i>
+                                                            </a>
+                                                            <a href="{{ path('facteurs_disciplinaires_delete', { 'id': disc.id }) }}" class="btn btn-danger btn-xs">
+                                                                <i class="fa fa-trash-o"></i>
+                                                            </a>
+                                                        </td>
+                                                    {% endif %}
+
+                                                </tr>
+
+                                                {% endfor %}
+
+
+
+
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}

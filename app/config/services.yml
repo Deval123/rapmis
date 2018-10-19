@@ -1,0 +1,100 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/service_container.html
+parameters:
+    #parameter_name: value
+
+services:
+
+  AppBundle\DataFixtures\ORM\CountryData:
+          tags: [doctrine.fixture.orm]
+
+  AppBundle\DataFixtures\ORM\RegionsData:
+          tags: [doctrine.fixture.orm]
+
+  AppBundle\DataFixtures\ORM\Type_etablissementsData:
+          tags: [doctrine.fixture.orm]
+
+  AppBundle\DataFixtures\ORM\AddressesData:
+          tags: [doctrine.fixture.orm]
+
+  AppBundle\DataFixtures\ORM\MatieresData:
+          tags: [doctrine.fixture.orm]
+
+  AppBundle\DataFixtures\ORM\NiveauData:
+          tags: [doctrine.fixture.orm]
+
+  AppBundle\DataFixtures\ORM\SysEducData:
+          tags: [doctrine.fixture.orm]
+
+  AppBundle\DataFixtures\ORM\DepartmentData:
+          tags: [doctrine.fixture.orm]
+
+  AppBundle\DataFixtures\ORM\SectionEducData:
+          tags: [doctrine.fixture.orm]
+
+  AppBundle\DataFixtures\ORM\CityData:
+          tags: [doctrine.fixture.orm]
+
+  AppBundle\DataFixtures\ORM\EtablissementsData:
+          tags: [doctrine.fixture.orm]
+
+  AppBundle\DataFixtures\ORM\StaffData:
+          tags: [doctrine.fixture.orm]
+
+  AppBundle\DataFixtures\ORM\ClassesData:
+          tags: [doctrine.fixture.orm]
+
+  AppBundle\DataFixtures\ORM\StudentsData:
+          tags: [doctrine.fixture.orm]
+
+  AppBundle\DataFixtures\ORM\TeacherData:
+          tags: [doctrine.fixture.orm]
+
+  AppBundle\DataFixtures\ORM\Enseignants_titulaireData:
+          tags: [doctrine.fixture.orm]
+
+  AppBundle\DataFixtures\ORM\Chef_departmentData:
+          tags: [doctrine.fixture.orm]
+
+  AppBundle\DataFixtures\ORM\UserData:
+          tags: [doctrine.fixture.orm]
+
+  AppBundle\DataFixtures\ORM\NotesData:
+          tags: [doctrine.fixture.orm]
+
+  AppBundle\DataFixtures\ORM\Facteurs_disciplinairesData:
+          tags: [doctrine.fixture.orm]
+
+  app.form.registration:
+     class: AppBundle\Form\RegistrationType
+     tags:
+         - { name: form.type, alias: app_user_registration }
+
+  app.form.profile:
+     class: AppBundle\Form\ProfileType
+     tags:
+         - { name: form.type, alias: app_user_profile }
+
+  upload.annotation_reader:
+    class: Grafikat\UploadBundle\Annotation\UploadAnnotationReader
+    arguments: ["@annotations.reader"]
+
+  upload.handler:
+    class: Grafikat\UploadBundle\Handler\UploadHandler
+  upload.subscriber:
+    class: Grafikat\UploadBundle\Listener\UploadSubscriber
+    arguments: ["@upload.annotation_reader", "@upload.handler"]
+    tags:
+      - { name: doctrine.event_subscriber, connection: default}
+    #service_name:
+    #    class: AppBundle\Directory\ClassName
+    #    arguments: ['@another_service_name', 'plain_value', '%parameter_name%']
+
+  security.acl.permission.map:
+    class: Sonata\AdminBundle\Security\Acl\Permission\AdminPermissionMap
+
+
+# optionally use a custom MaskBuilder
+#parameters:
+   # sonata.admin.security.mask.builder.class: Sonata\AdminBundle\Security\Acl\Permission\MaskBuilder
+

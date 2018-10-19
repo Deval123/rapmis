@@ -1,0 +1,49 @@
+# src/OC/PlatformBundle/Resources/config/services.yml
+services:
+    AppBundle\DataFixtures\ORM\UserData:
+            tags: [doctrine.fixture.orm]
+
+    AppBundle\DataFixtures\ORM\StaffData:
+            tags: [doctrine.fixture.orm]
+
+    AppBundle\DataFixtures\ORM\StudentsData:
+            tags: [doctrine.fixture.orm]
+
+    AppBundle\DataFixtures\ORM\TeacherData:
+            tags: [doctrine.fixture.orm]
+
+    AppBundle\DataFixtures\ORM\RegionsData:
+            tags: [doctrine.fixture.orm]
+
+    AppBundle\DataFixtures\ORM\DepartmentData:
+            tags: [doctrine.fixture.orm]
+
+    AppBundle\DataFixtures\ORM\SysEducData:
+            tags: [doctrine.fixture.orm]
+
+    AppBundle\DataFixtures\ORM\SectionEducData:
+            tags: [doctrine.fixture.orm]
+
+    AppBundle\DataFixtures\ORM\Type_etablissementsData:
+            tags: [doctrine.fixture.orm]
+
+    AppBundle\DataFixtures\ORM\MatieresData:
+            tags: [doctrine.fixture.orm]
+
+    AppBundle\DataFixtures\ORM\ClassesData:
+            tags: [doctrine.fixture.orm]
+
+    AppBundle\DataFixtures\ORM\AddressesData:
+            tags: [doctrine.fixture.orm]
+
+    AppBundle\DataFixtures\ORM\CityData:
+            tags: [doctrine.fixture.orm]
+
+    AppBundle\DataFixtures\ORM\Enseignants_titulaireData:
+            tags: [doctrine.fixture.orm]
+
+    AppBundle\DataFixtures\ORM\EtablissemntsData:
+            tags: [doctrine.fixture.orm]
+
+  AppBundle\DataFixtures\ORM\Chef_departmentData:
+          tags: [doctrine.fixture.orm]

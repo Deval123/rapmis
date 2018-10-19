@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="page-content-wrapper">
+    <div class="page-content">
+        <div class="page-bar">
+            <div class="page-title-breadcrumb">
+                <div class=" pull-left">
+                    <div class="page-title">Dashboard</div>
+                </div>
+                <ol class="breadcrumb page-breadcrumb pull-right">
+                    <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item" href="{{ path('homepage') }}">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
+                    </li>
+                    <li class="active">Dashboard</li>
+                </ol>
+            </div>
+        </div>
+    <h1>Niveaux list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Subject</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for niveau in niveaux %}
+            <tr>
+                <td><a href="{{ path('niveau_show', { 'id': niveau.id }) }}">{{ niveau.id }}</a></td>
+                <td>{{ niveau.name }}</td>
+                <td>{{ niveau.matieres|join(',,') }}</td>
+                <td>{{ niveau.description }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('niveau_show', { 'id': niveau.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('niveau_edit', { 'id': niveau.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('niveau_new') }}">Create a new niveau</a>
+        </li>
+    </ul>
+    </div>
+</div>
+{% endblock %}

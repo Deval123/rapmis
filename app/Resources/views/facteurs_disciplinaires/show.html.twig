@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="page-content-wrapper">
+    <div class="page-content">
+        <div class="page-bar">
+            <div class="page-title-breadcrumb">
+                <div class=" pull-left">
+                    <div class="page-title">Dashboard</div>
+                </div>
+                <ol class="breadcrumb page-breadcrumb pull-right">
+                    <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item" href="{{ path('homepage') }}">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
+                    </li>
+                    <li class="active">Dashboard</li>
+                </ol>
+            </div>
+        </div>
+    <h1>Facteurs_disciplinaire</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ facteurs_disciplinaire.id }}</td>
+            </tr>
+            <tr>
+                <th>Motif</th>
+                <td>{{ facteurs_disciplinaire.motif }}</td>
+            </tr>
+            <tr>
+                <th>Compteur</th>
+                <td>{{ facteurs_disciplinaire.compteur }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ facteurs_disciplinaire.description }}</td>
+            </tr>
+            <tr>
+                <th>Datemotif</th>
+                <td>{% if facteurs_disciplinaire.dateMotif %}{{ facteurs_disciplinaire.dateMotif|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('facteurs_disciplinaires_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('facteurs_disciplinaires_edit', { 'id': facteurs_disciplinaire.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+    </div>
+</div>
+{% endblock %}

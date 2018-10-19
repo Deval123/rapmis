@@ -1,0 +1,32 @@
+AdminMedia_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Media:index" }
+    methods:  GET
+
+AdminMedia_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Media:show" }
+    methods:  GET
+
+AdminMedia_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Media:new" }
+    methods:  [GET, POST]
+AdminMedia_new_addresses:
+    path:     /new/Addresses
+    defaults: { _controller: "AppBundle:Media:uploadAdresses" }
+    methods:  [GET, POST]
+AdminMedia_new_matieres:
+    path:     /new/matieres
+    defaults: { _controller: "AppBundle:Media:uploadMatieres" }
+    methods:  [GET, POST]
+
+AdminMedia_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Media:edit" }
+    methods:  [GET, POST]
+
+AdminMedia_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Media:delete" }
+    methods:  DELETE

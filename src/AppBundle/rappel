@@ -1,0 +1,112 @@
+ici les éléments à inserer de nouveau au niveau de mes entitées, le champs pour photos, etablissements(logo)
+Enseignants(photos), élèves(photos) et Club(logo). A completer également toutes les relations, voir photos
+dans téléphones pour mieux d'éclaircissement.
+
+rappel le line du site de HABITECH SOLUTIONS à mettre dans base.html.twig et index.html.twig
+
+
+télécharger http://radixtouch.in/templates/admin/smart/source/dark/index.html pour couleur de ma vue
+
+version utilisé pour rapmisSymfony 3.3.16
+
+creer regions
+creer departement
+creer villes**
+
+creer type d'enseignements
+creer section educative(syseduc)
+creer types d'etablissements
+
+creer etablissements
+creer les specialités et matieres
+creer classes (d'abord creer établissements, matières et spécialité)
+creer enseignants(d'abord creer matières)
+creer staff (d'abord creer établissement)
+
+php bin/console doctrine:fixtures:load --help
+
+
+https://github.com/konshensx16/embed-collection-of-forms
+https://symfony.com/doc/3.4/form/form_collections.html
+
+look this: http://symfony.com/doc/3.4/form/multiple_buttons.html
+
+performance générale
+
+2Go= 2147483648 bits
+php bin/console doctrine:schema:update —force
+
+Doctrine provides another useful command which will both check your mapping for errors and also check your current database structure to see if it matches.
+php bin/console doctrine:schema:validate
+
+If you run the validate command after the update command, your console output should look something like this:
+doctrine-schema-commands.png
+
+Using the mysql shell, SequelPro, PHPMyAdmin, or another database interface of your choice, you can visually confirm that the fos_user table in your project database now contains a phone_number column.
+
+
+moti= nature de l'indiscipline
+
+lieu, (cours ou matières) rubrique autres pour désordre hors cours
+compteur s'incrémente en arrière plan
+requête au niveau des devoir non éffectué sur une période donnée prendre un interval
+
+class survey: moyenne générale de la classe en fonction de sequence de façon total
+moyenne générale de la classe en fonction de sequence/matière
+pas d'accent a votre
+class survey 2: pourcentage de reussite de l'année présendente
+
+au niveau des actions on liste les natures de l'indisciplines de façon plus détaillé
+
+
+06-09-2018
+redoublant à ancien, type true or false
+text descriptif du rapmis, en place des diagrammes sur la first page
+juste en face petit slades d'images des différentes solutions
+gestions d'annonce et commentaire
+juste en bas upload and download last subject and exam
+au niveau de discipline autre, pour hors de cours
+amoniser le compteur pour la nauture de l'indiscipline
+
+interactivité
+participation en classe, prise de parole, exposé
+
+
+5/09/2018
+quick mail et annonce avant forum et download
+download just infront of advetissement
+
+apres connexion upload à la place de quick mail,
+dernier tableau pour des grandes photos.
+toujours préciser ou nous sommes.
+
+voir la liste des classes des étblissemnts(elle doit être liée à l'établissement)  ||fait
+creation de classe, refuser le doublont, modifier sur les actions de classes ||fait
+apres avoir édité la classe, ainsi u'un enseignant  elle doit rentrer automatiquement à la liste des classes
+ou des enseignant, ainsi que toutes les autres entitées ||fait
+garder l'un entre par concour ou etude de doossier au nivea de l'elève. ||fait
+le champ classe dans élève ne devrait pas exisster sous cette forme. ||fait
+dans un nouvel etablissement ne voit que les élèves de cette établessement là ||fait
+remplacer date admission par matières dispensée.    ||fait
+mettre les niveau et matières dans la bar de menu.    ||fait
+verifier le retour apres avoir édité toute entité     ||fait (cas de satff)
+staff add user doit prendre par défaut l'établissement de l'utilisateur connecté ||fait
+creation de l'enseignat titulaire, bien gerer niveau et name class: normalement classe à la place de niveau ||fait
+aussi la creation du titulaire pour etablissement non existante ||fait
+finir avec note, autre à la place de si cela a eu lieu a des cours
+faire en sorte que la creation de toute entité ne considère que l'établissement auquel il appartient
+
+24/09/2018
+dernier tableau pub plus information aux enfants
+ajouter les mentions de dinamisme de l'élève au niveau de ses information personnelle
+login des parents, envoie de message aux parents des élèves se fera à trois niveau:
+prent de l'élève, parente des élèves d'une classe ou d'un établissement tout en entier
+
+https://packagist.org/packages/phpoffice/phpspreadsheet
+https://packagist.org/packages/nzo/file-downloader-bundle
+Google:
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+Microsoft
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>

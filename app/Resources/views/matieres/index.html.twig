@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="page-content-wrapper">
+    <div class="page-content">
+        <div class="page-bar">
+            <div class="page-title-breadcrumb">
+                <div class=" pull-left">
+                    <div class="page-title">Dashboard</div>
+                </div>
+                <ol class="breadcrumb page-breadcrumb pull-right">
+                    <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item" href="{{ path('homepage') }}">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
+                    </li>
+                    <li class="active">Dashboard</li>
+                </ol>
+            </div>
+        </div>
+    <h1>Matieres list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Intitule</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for matiere in matieres %}
+            <tr>
+                <td><a href="{{ path('matieres_show', { 'id': matiere.id }) }}">{{ matiere.id }}</a></td>
+                <td>{{ matiere.name }}</td>
+                <td>{{ matiere.intitule }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('matieres_show', { 'id': matiere.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('matieres_edit', { 'id': matiere.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('matieres_new') }}">Create a new matiere</a>
+        </li>
+    </ul>
+    </div>
+</div>
+{% endblock %}

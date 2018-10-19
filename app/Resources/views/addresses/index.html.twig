@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="page-content-wrapper">
+    <div class="page-content">
+        <div class="page-bar">
+            <div class="page-title-breadcrumb">
+                <div class=" pull-left">
+                    <div class="page-title">Dashboard</div>
+                </div>
+                <ol class="breadcrumb page-breadcrumb pull-right">
+                    <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item" href="{{ path('homepage') }}">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
+                    </li>
+                    <li class="active">Dashboard</li>
+                </ol>
+            </div>
+        </div>
+    <h1>Addresses list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Tel</th>
+                <th>Email</th>
+                <th>Bp</th>
+                <th>Fax</th>
+                <th>Longitude</th>
+                <th>Latitude</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for address in addresses %}
+            <tr>
+                <td><a href="{{ path('addresses_show', { 'id': address.id }) }}">{{ address.id }}</a></td>
+                <td>{{ address.tel }}</td>
+                <td>{{ address.email }}</td>
+                <td>{{ address.bP }}</td>
+                <td>{{ address.fax }}</td>
+                <td>{{ address.longitude }}</td>
+                <td>{{ address.latitude }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('addresses_show', { 'id': address.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('addresses_edit', { 'id': address.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('addresses_new') }}">Create a new address</a>
+        </li>
+    </ul>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,129 @@
+app_epreuves:
+    resource: "@AppBundle/Controller/EpreuvesController.php"
+    type:     annotation
+
+sandbox:
+    resource: "@sandboxBundle/Resources/config/routing.xml"
+    prefix:   /pdf/
+
+#sandbox_homepage:
+#    path:     /
+#    defaults: { _controller: sandboxBundle:Default:index }
+#
+#sandbox_pdfexample:
+#    path:     /pdf-example
+#    defaults: { _controller: sandboxBundle:Default:pdf }
+
+app_country:
+    resource: "@AppBundle/Controller/CountryController.php"
+    type:     annotation
+
+app_niveau:
+    resource: "@AppBundle/Controller/NiveauController.php"
+    type:     annotation
+
+app_chef.department:
+    resource: "@AppBundle/Controller/Chef_departmentController.php"
+    type:     annotation
+
+app_classes:
+    resource: "@AppBundle/Controller/ClassesController.php"
+    type:     annotation
+
+app_type.etablissements:
+    resource: "@AppBundle/Controller/Type_etablissementsController.php"
+    type:     annotation
+
+app_teacher:
+    resource: "@AppBundle/Controller/TeacherController.php"
+    type:     annotation
+
+app_sys_educ:
+    resource: "@AppBundle/Controller/SysEducController.php"
+    type:     annotation
+
+app_students:
+    resource: "@AppBundle/Controller/StudentsController.php"
+    type:     annotation
+
+app_staff:
+    resource: "@AppBundle/Controller/StaffController.php"
+    type:     annotation
+
+app_section_educ:
+    resource: "@AppBundle/Controller/SectionEducController.php"
+    type:     annotation
+
+app_regions:
+    resource: "@AppBundle/Controller/RegionsController.php"
+    type:     annotation
+
+app_notes:
+    resource: "@AppBundle/Controller/NotesController.php"
+    type:     annotation
+
+app_modules:
+    resource: "@AppBundle/Controller/ModulesController.php"
+    type:     annotation
+
+app_media:
+    resource: "@AppBundle/Controller/MediaController.php"
+    type:     annotation
+
+app_matieres:
+    resource: "@AppBundle/Controller/MatieresController.php"
+    type:     annotation
+
+app_fiche.parents:
+    resource: "@AppBundle/Controller/Fiche_parentsController.php"
+    type:     annotation
+
+app_facteurs.disciplinaires:
+    resource: "@AppBundle/Controller/Facteurs_disciplinairesController.php"
+    type:     annotation
+
+app_etablissements:
+    resource: "@AppBundle/Controller/EtablissementsController.php"
+    type:     annotation
+
+app_events.extracurricular:
+    resource: "@AppBundle/Controller/Events_extracurricularController.php"
+    type:     annotation
+
+app_enseignants.titulaire:
+    resource: "@AppBundle/Controller/Enseignants_titulaireController.php"
+    type:     annotation
+
+app_department:
+    resource: "@AppBundle/Controller/DepartmentController.php"
+    type:     annotation
+
+app_city:
+    resource: "@AppBundle/Controller/CityController.php"
+    type:     annotation
+
+app_addresses:
+    resource: "@AppBundle/Controller/AddressesController.php"
+    type:     annotation
+
+chat:
+    resource: "@ChatBundle/Controller/"
+    type:     annotation
+    prefix:   /chat/
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+# config/routes/sonata_admin.yaml
+
+admin_area:
+    resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
+    prefix: /admin
+
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /admin

@@ -1,0 +1,200 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="page-content-wrapper">
+    <div class="page-content">
+        <div class="page-bar">
+            <div class="page-title-breadcrumb">
+                <div class=" pull-left">
+                    <div class="page-title">Dashboard</div>
+                </div>
+                <ol class="breadcrumb page-breadcrumb pull-right">
+                    <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item" href="{{ path('homepage') }}">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
+                    </li>
+                    <li class="active">Dashboard</li>
+                </ol>
+            </div>
+        </div>
+    <h1>Fiche_parent</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ fiche_parent.id }}</td>
+            </tr>
+            <tr>
+                <th>Nomprenompere</th>
+                <td>{{ fiche_parent.nomPrenomPere }}</td>
+            </tr>
+            <tr>
+                <th>Profession</th>
+                <td>{{ fiche_parent.profession }}</td>
+            </tr>
+            <tr>
+                <th>Residence</th>
+                <td>{{ fiche_parent.residence }}</td>
+            </tr>
+            <tr>
+                <th>Medecinfamille</th>
+                <td>{{ fiche_parent.medecinFamille }}</td>
+            </tr>
+            <tr>
+                <th>Telpere</th>
+                <td>{{ fiche_parent.telPere }}</td>
+            </tr>
+            <tr>
+                <th>Emailpere</th>
+                <td>{{ fiche_parent.emailPere }}</td>
+            </tr>
+            <tr>
+                <th>Signature</th>
+                <td>{{ fiche_parent.signature }}</td>
+            </tr>
+            <tr>
+                <th>Nomprenommere</th>
+                <td>{{ fiche_parent.nomPrenomMere }}</td>
+            </tr>
+            <tr>
+                <th>Professionmere</th>
+                <td>{{ fiche_parent.professionMere }}</td>
+            </tr>
+            <tr>
+                <th>Assurancepere</th>
+                <td>{{ fiche_parent.assurancePere }}</td>
+            </tr>
+            <tr>
+                <th>Assurancemere</th>
+                <td>{{ fiche_parent.assuranceMere }}</td>
+            </tr>
+            <tr>
+                <th>Residencemere</th>
+                <td>{{ fiche_parent.residenceMere }}</td>
+            </tr>
+            <tr>
+                <th>Medecinfamillemere</th>
+                <td>{{ fiche_parent.medecinFamilleMere }}</td>
+            </tr>
+            <tr>
+                <th>Telmere</th>
+                <td>{{ fiche_parent.telMere }}</td>
+            </tr>
+            <tr>
+                <th>Emailmere</th>
+                <td>{{ fiche_parent.emailMere }}</td>
+            </tr>
+            <tr>
+                <th>Signaturemere</th>
+                <td>{{ fiche_parent.signatureMere }}</td>
+            </tr>
+            <tr>
+                <th>Nomprenomtuteur</th>
+                <td>{{ fiche_parent.nomPrenomTuteur }}</td>
+            </tr>
+            <tr>
+                <th>Professiontuteur</th>
+                <td>{{ fiche_parent.professionTuteur }}</td>
+            </tr>
+            <tr>
+                <th>Assurancetuteur</th>
+                <td>{{ fiche_parent.assuranceTuteur }}</td>
+            </tr>
+            <tr>
+                <th>Residencetuteur</th>
+                <td>{{ fiche_parent.residenceTuteur }}</td>
+            </tr>
+            <tr>
+                <th>Medecinfamilletuteur</th>
+                <td>{{ fiche_parent.medecinFamilleTuteur }}</td>
+            </tr>
+            <tr>
+                <th>Teltuteur</th>
+                <td>{{ fiche_parent.telTuteur }}</td>
+            </tr>
+            <tr>
+                <th>Emailtuteur</th>
+                <td>{{ fiche_parent.emailTuteur }}</td>
+            </tr>
+            <tr>
+                <th>Signaturetuteur</th>
+                <td>{{ fiche_parent.signatureTuteur }}</td>
+            </tr>
+            <tr>
+                <th>Frerenom1</th>
+                <td>{{ fiche_parent.frereNom1 }}</td>
+            </tr>
+            <tr>
+                <th>Frerenom2</th>
+                <td>{{ fiche_parent.frereNom2 }}</td>
+            </tr>
+            <tr>
+                <th>Frerenom3</th>
+                <td>{{ fiche_parent.frereNom3 }}</td>
+            </tr>
+            <tr>
+                <th>Telfrere1</th>
+                <td>{{ fiche_parent.telFrere1 }}</td>
+            </tr>
+            <tr>
+                <th>Telfrere2</th>
+                <td>{{ fiche_parent.telFrere2 }}</td>
+            </tr>
+            <tr>
+                <th>Telfrere3</th>
+                <td>{{ fiche_parent.telFrere3 }}</td>
+            </tr>
+            <tr>
+                <th>Mailfrere1</th>
+                <td>{{ fiche_parent.mailFrere1 }}</td>
+            </tr>
+            <tr>
+                <th>Mailfrere2</th>
+                <td>{{ fiche_parent.mailFrere2 }}</td>
+            </tr>
+            <tr>
+                <th>Mailfrere3</th>
+                <td>{{ fiche_parent.mailFrere3 }}</td>
+            </tr>
+            <tr>
+                <th>Niveauscolairefrere1</th>
+                <td>{{ fiche_parent.niveauScolaireFrere1 }}</td>
+            </tr>
+            <tr>
+                <th>Niveauscolairefrere2</th>
+                <td>{{ fiche_parent.niveauScolaireFrere2 }}</td>
+            </tr>
+            <tr>
+                <th>Niveauscolairefrere3</th>
+                <td>{{ fiche_parent.niveauScolaireFrere3 }}</td>
+            </tr>
+            <tr>
+                <th>Professionfrere1</th>
+                <td>{{ fiche_parent.professionFrere1 }}</td>
+            </tr>
+            <tr>
+                <th>Professionfrere2</th>
+                <td>{{ fiche_parent.professionFrere2 }}</td>
+            </tr>
+            <tr>
+                <th>Professionfrere3</th>
+                <td>{{ fiche_parent.professionFrere3 }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('fiche_parents_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('fiche_parents_edit', { 'id': fiche_parent.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,451 @@
+{% extends 'base.html.twig' %}
+{% set compt = 0 %}
+{% set compt_class = 0 %}
+{% set percent = 0 %}
+{% set compt1 = 0 %}
+{% set percent1 = 0 %}
+
+
+{% block body %}
+            <div class="page-content-wrapper">
+                <div class="page-content">
+                    <div class="page-bar">
+                        <div class="page-title-breadcrumb">
+                            <div class=" pull-left">
+                                <div class="page-title">Dashboard</div>
+                            </div>
+                            <ol class="breadcrumb page-breadcrumb pull-right">
+                                <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item" href="{{ path('homepage') }}">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
+                                </li>
+                                <li class="active">Dashboard</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <!-- start widget -->
+                    <div class="state-overview">
+                        <div class="row">
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <div class="col-xl-3 col-md-6 col-12">
+                                <div class="info-box bg-b-green">
+                                    <span class="info-box-icon push-bottom"><i class="material-icons">group</i></span>
+
+                                    <div class="info-box-content">
+                                        <span class="info-box-text">Total Students</span>
+                                            {% for student in students if ((app.user.etablissements.name) and (student.classes.etablissements.name == app.user.etablissements.name  )) %}
+                                                {% set compt = compt + 1 %}
+                                            {% endfor %}
+
+                                        {% for class in classes if ((app.user.etablissements.name) and (class.etablissements.name == app.user.etablissements.name  )) %}
+                                            {% set compt_class = compt_class + 1 %}
+                                        {% endfor %}
+                                        {% if(compt_class == 0) %}
+                                        {% set percent = (compt/1)*0 %}
+                                            {% else %}
+                                                {% set percent = (compt/(compt_class*50))*100 %}
+                                        {% endif %}
+                                        <span class="info-box-number">{{ compt }}</span>
+                                        <div class="progress">
+                                            <div class="progress-bar" style="width: {{ percent }}%"></div>
+                                        </div>
+                                        <span class="progress-description">
+                                            {{ percent|round(2, 'floor')  }}% Increase in 28 Days
+						                  </span>
+                                    </div>
+                                    <!-- /.info-box-content -->
+                                </div>
+                                    <!-- /.info-box -->
+                            </div>
+        {% else %}
+            <div class="col-xl-3 col-md-6 col-12">
+                <div class="info-box bg-b-green">
+                    <span class="info-box-icon push-bottom"><i class="material-icons">group</i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">Total Students</span>
+                        <span class="info-box-number">450</span>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 45%"></div>
+                        </div>
+                        <span class="progress-description">
+                                            45% Increase in 28 Days
+						                  </span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+        {% endif %}
+                            <!-- /.col -->
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <div class="col-xl-3 col-md-6 col-12">
+                                <div class="info-box bg-b-yellow">
+                                    <span class="info-box-icon push-bottom"><i class="material-icons">person</i></span>
+                                    <div class="info-box-content">
+                                        <span class="info-box-text">New Students</span>
+                                        {% for student in students if ((app.user.etablissements.name) and (student.classes.etablissements.name == app.user.etablissements.name  )) %}
+                                            {% if student.nouveau == true %}
+                                            {% set compt1 = compt1 + 1 %}
+                                            {% endif %}
+                                        {% endfor %}
+                            {% if (compt_class ==0) %}
+                                {% set percent1 = (compt1/1)*0 %}
+                            {% else %}
+                                        {% set percent1 = (compt1/(compt_class*50))*100 %}
+                                {% endif %}
+                                        <span class="info-box-number">{{ compt1 }}</span>
+                                        <div class="progress">
+                                            <div class="progress-bar" style="width: {{ percent }}%"></div>
+                                        </div>
+                                        <span class="progress-description">
+						                   {{ percent1|round(2, 'floor')  }}% Increase in 28 Days
+						                  </span>
+                                    </div>
+                                    <!-- /.info-box-content -->
+                                </div>
+                                <!-- /.info-box -->
+                            </div>
+        {% else %}
+            <div class="col-xl-3 col-md-6 col-12">
+                <div class="info-box bg-b-yellow">
+                    <span class="info-box-icon push-bottom"><i class="material-icons">person</i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">New Students</span>
+                        <span class="info-box-number">155</span>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 40%"></div>
+                        </div>
+                        <span class="progress-description">
+						                   40% Increase in 28 Days
+						                  </span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+        {% endif %}
+                            <!-- /.col -->
+
+                            <div class="col-xl-3 col-md-6 col-12">
+                                <div class="info-box bg-b-blue">
+                                    <span class="info-box-icon push-bottom"><i class="material-icons">school</i></span>
+                                    <div class="info-box-content">
+                                        <span class="info-box-text">Total Course</span>
+                                        <span class="info-box-number">52</span>
+                                        <div class="progress">
+                                            <div class="progress-bar" style="width: 85%"></div>
+                                        </div>
+                                        <span class="progress-description">
+						                    85% Increase in 28 Days
+						                  </span>
+                                    </div>
+                                    <!-- /.info-box-content -->
+                                </div>
+                                <!-- /.info-box -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-xl-3 col-md-6 col-12">
+                                <div class="info-box bg-b-pink">
+                                    <span class="info-box-icon push-bottom"><i class="material-icons">monetization_on</i></span>
+                                    <div class="info-box-content">
+                                        <span class="info-box-text">Fees Collection</span>
+                                        <span class="info-box-number">13,921</span><span>$</span>
+                                        <div class="progress">
+                                            <div class="progress-bar" style="width: 50%"></div>
+                                        </div>
+                                        <span class="progress-description">
+						                    50% Increase in 28 Days
+						                  </span>
+                                    </div>
+                                    <!-- /.info-box-content -->
+                                </div>
+                                <!-- /.info-box -->
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                    </div>
+                    <!-- end widget -->
+                    <!-- chart start -->
+                    <div class="row">
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% include 'modulesUsed/school_survey.html.twig' %}
+        {% include 'modulesUsed/school_survey1.html.twig' %}
+
+    {% else %}
+        {% include 'modulesUsed/rapmis.html.twig' %}
+        {% include 'modulesUsed/school_survey.html.twig' %}
+        {% include 'modulesUsed/carousel.html.twig' %}
+    {% endif %}
+                    </div>
+                    <!-- Chart end -->
+                    <!-- start carousel images  or start course list -->
+                    <div class="row">
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% include 'modulesUsed/course_list.html.twig' %}
+    {% else %}
+        {% include 'modulesUsed/carousel_image.html.twig' %}
+    {% endif %}
+                    </div>
+                    <!-- End carousel images or end start course  -->
+
+                        <!-- Quick Mail and Activity feed start -->
+                    <div class="row">
+                        <!-- Quick Mail start -->
+                        {{ include('modulesUsed/quick_mail.html.twig') }}
+                        {#{% include 'modulesUsed/quick_mail.html.twig' %}#}
+                        <!-- Quick Mail end -->
+                        <!-- Activity feed start -->
+                        {{ include('modulesUsed/activity_feed.html.twig') }}
+                        {#{% include 'modulesUsed/activity_feed.html.twig' %}#}
+                        <!-- Activity feed end -->
+                    </div>
+                    <!-- Quick Mail and Activity feed end -->
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                            <div class="card-box">
+                                <div class="card-head">
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <header>Upload Subjet</header>
+                {% else %}
+                    <header>Download Subjet</header>
+
+                {% endif %}
+                                    <button id = "panel-button8"
+                                            class = "mdl-button mdl-js-button mdl-button--icon pull-right"
+                                            data-upgraded = ",MaterialButton">
+                                        <i class = "material-icons">more_vert</i>
+                                    </button>
+                                    <ul class = "mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                                        data-mdl-for = "panel-button8">
+                                        <li class = "mdl-menu__item"><i class="material-icons">assistant_photo</i>Action</li>
+                                        <li class = "mdl-menu__item"><i class="material-icons">print</i>Another action</li>
+                                        <li class = "mdl-menu__item"><i class="material-icons">favorite</i>Something else here</li>
+                                    </ul>
+                                </div>
+                                <div class="card-body ">
+                                    <div class="table-responsive">
+                                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                            {{ form_start(form) }}
+                                            {{ form_widget(form) }}
+                                            <div class="box-footer clearfix">
+                                                <button type="submit" class="mdl-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-primary pull-right">Create <i class="fa fa-paper-plane-o"></i></button>
+                                            </div>
+                                            {{ form_end(form) }}
+                                            {#{{ render (controller('AppBundle:Epreuves:new')) }}#}
+                                        {% else %}
+                                            <div class="clear"></div>
+                                            {{ form_start(form1) }}
+                                            {{ form_widget(form1) }}
+                                            <div class="box-footer clearfix">
+                                                <button type="submit" class="mdl-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-primary pull-right">Go to <i class="fa fa-paper-plane-o"></i></button>
+                                            </div>
+                                            {{ form_end(form1) }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                            <div class="card-box">
+                                <div class="card-head">
+                                    <header>Todo List</header>
+                                    <button id = "panel-button"
+                                            class = "mdl-button mdl-js-button mdl-button--icon pull-right"
+                                            data-upgraded = ",MaterialButton">
+                                        <i class = "material-icons">more_vert</i>
+                                    </button>
+                                    <ul class = "mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                                        data-mdl-for = "panel-button">
+                                        <li class = "mdl-menu__item"><i class="material-icons">assistant_photo</i>Action</li>
+                                        <li class = "mdl-menu__item"><i class="material-icons">print</i>Another action</li>
+                                        <li class = "mdl-menu__item"><i class="material-icons">favorite</i>Something else here</li>
+                                    </ul>
+                                </div>
+                                <div class="card-body ">
+                                    <ul class="to-do-list ui-sortable" id="sortable-todo">
+                                        <li class="clearfix">
+                                            <div class="todo-check pull-left">
+                                                <input type="checkbox" value="None" id="todo-check1">
+                                                <label for="todo-check1"></label>
+                                            </div>
+                                            <p class="todo-title">Add fees details in system
+                                            </p>
+                                            <div class="todo-actionlist pull-right clearfix">
+                                                <a href="#" class="todo-remove"><i class="fa fa-times"></i></a>
+                                            </div>
+                                        </li>
+                                        <li class="clearfix">
+                                            <div class="todo-check pull-left">
+                                                <input type="checkbox" value="None" id="todo-check2">
+                                                <label for="todo-check2"></label>
+                                            </div>
+                                            <p class="todo-title">Announcement for holiday
+                                            </p>
+                                            <div class="todo-actionlist pull-right clearfix">
+                                                <a href="#" class="todo-remove"><i class="fa fa-times"></i></a>
+                                            </div>
+                                        </li>
+                                        <li class="clearfix">
+                                            <div class="todo-check pull-left">
+                                                <input type="checkbox" value="None" id="todo-check3">
+                                                <label for="todo-check3"></label>
+                                            </div>
+                                            <p class="todo-title">call bus driver</p>
+                                            <div class="todo-actionlist pull-right clearfix">
+                                                <a href="#" class="todo-remove"><i class="fa fa-times"></i></a>
+                                            </div>
+                                        </li>
+                                        <li class="clearfix">
+                                            <div class="todo-check pull-left">
+                                                <input type="checkbox" value="None" id="todo-check4">
+                                                <label for="todo-check4"></label>
+                                            </div>
+                                            <p class="todo-title">School picnic</p>
+                                            <div class="todo-actionlist pull-right clearfix">
+                                                <a href="#" class="todo-remove"><i class="fa fa-times"></i></a>
+                                            </div>
+                                        </li>
+                                        <li class="clearfix">
+                                            <div class="todo-check pull-left">
+                                                <input type="checkbox" value="None" id="todo-check5">
+                                                <label for="todo-check5"></label>
+                                            </div>
+                                            <p class="todo-title">Exam time table generate
+                                            </p>
+                                            <div class="todo-actionlist pull-right clearfix">
+                                                <a href="#" class="todo-remove"><i class="fa fa-times"></i></a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- start new student list -->
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="card  card-box">
+                                <div class="card-head">
+                                    <header>New Student List</header>
+                                    <div class="tools">
+                                        <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
+                                        <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
+                                        <a class="t-close btn-color fa fa-times" href="javascript:;"></a>
+                                    </div>
+                                </div>
+                                <div class="card-body ">
+                                    <div class="table-wrap">
+                                        <div class="table-responsive">
+                                            <table class="table display product-overview mb-30" id="support_table">
+                                                <thead>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Name</th>
+                                                    <th>Assigned Professor</th>
+                                                    <th>Date Of Admit</th>
+                                                    <th>Fees</th>
+                                                    <th>Branch</th>
+                                                    <th>Edit</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>Jens Brincker</td>
+                                                    <td>Kenny Josh</td>
+                                                    <td>27/05/2016</td>
+                                                    <td>
+                                                        <span class="label label-sm label-success">paid</span>
+                                                    </td>
+                                                    <td>Mechanical</td>
+                                                    <td><a href="javascript:void(0)" class="" data-toggle="tooltip" title="Edit" ><i class="fa fa-check"></i></a> <a href="javascript:void(0)" class="text-inverse" title="Delete" data-toggle="tooltip"><i class="fa fa-trash"></i></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>Mark Hay</td>
+                                                    <td> Mark</td>
+                                                    <td>26/05/2017</td>
+                                                    <td>
+                                                        <span class="label label-sm label-warning">unpaid </span>
+                                                    </td>
+                                                    <td>Science</td>
+                                                    <td><a href="javascript:void(0)" class="" data-toggle="tooltip" title="Edit" ><i class="fa fa-check"></i></a> <a href="javascript:void(0)" class="text-inverse" title="Delete" data-toggle="tooltip"><i class="fa fa-trash"></i></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>Anthony Davie</td>
+                                                    <td>Cinnabar</td>
+                                                    <td>21/05/2016</td>
+                                                    <td>
+                                                        <span class="label label-sm label-success ">paid</span>
+                                                    </td>
+                                                    <td>Commerce</td>
+                                                    <td><a href="javascript:void(0)" class="" data-toggle="tooltip" title="Edit" ><i class="fa fa-check"></i></a> <a href="javascript:void(0)" class="text-inverse" title="Delete" data-toggle="tooltip"><i class="fa fa-trash"></i></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td>David Perry</td>
+                                                    <td>Felix </td>
+                                                    <td>20/04/2016</td>
+                                                    <td>
+                                                        <span class="label label-sm label-danger">unpaid</span>
+                                                    </td>
+                                                    <td>Mechanical</td>
+                                                    <td><a href="javascript:void(0)" class="" data-toggle="tooltip" title="Edit" ><i class="fa fa-check"></i></a> <a href="javascript:void(0)" class="text-inverse" title="Delete" data-toggle="tooltip"><i class="fa fa-trash"></i></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td>Anthony Davie</td>
+                                                    <td>Beryl</td>
+                                                    <td>24/05/2016</td>
+                                                    <td>
+                                                        <span class="label label-sm label-success ">paid</span>
+                                                    </td>
+                                                    <td>M.B.A.</td>
+                                                    <td><a href="javascript:void(0)" class="" data-toggle="tooltip" title="Edit" ><i class="fa fa-check"></i></a> <a href="javascript:void(0)" class="text-inverse" title="Delete" data-toggle="tooltip"><i class="fa fa-trash"></i></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>6</td>
+                                                    <td>Alan Gilchrist</td>
+                                                    <td>Joshep</td>
+                                                    <td>22/05/2016</td>
+                                                    <td>
+                                                        <span class="label label-sm label-warning ">unpaid</span>
+                                                    </td>
+                                                    <td>Science</td>
+                                                    <td><a href="javascript:void(0)" class="" data-toggle="tooltip" title="Edit" ><i class="fa fa-check"></i></a> <a href="javascript:void(0)" class="text-inverse" title="Delete" data-toggle="tooltip"><i class="fa fa-trash"></i></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>7</td>
+                                                    <td>Mark Hay</td>
+                                                    <td>Jayesh</td>
+                                                    <td>18/06/2016</td>
+                                                    <td>
+                                                        <span class="label label-sm label-success ">paid</span>
+                                                    </td>
+                                                    <td>Commerce</td>
+                                                    <td><a href="javascript:void(0)" class="" data-toggle="tooltip" title="Edit" ><i class="fa fa-check"></i></a> <a href="javascript:void(0)" class="text-inverse" title="Delete" data-toggle="tooltip"><i class="fa fa-trash"></i></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>8</td>
+                                                    <td>Sue Woodger</td>
+                                                    <td>Sharma</td>
+                                                    <td>17/05/2016</td>
+                                                    <td>
+                                                        <span class="label label-sm label-danger">unpaid</span>
+                                                    </td>
+                                                    <td>Mechanical</td>
+                                                    <td><a href="javascript:void(0)" class="" data-toggle="tooltip" title="Edit" ><i class="fa fa-check"></i></a> <a href="javascript:void(0)" class="text-inverse" title="Delete" data-toggle="tooltip"><i class="fa fa-trash"></i></a></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end new student list -->
+                </div>
+
+            </div>
+{% endblock %}
